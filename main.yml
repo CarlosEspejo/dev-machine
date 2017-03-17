@@ -1,0 +1,120 @@
+---
+- hosts: all
+  connection: local
+  vars:
+    user: "{{ lookup('env', 'USER') }}"
+    home: "{{ lookup('env', 'HOME') }}"
+    ruby_version: 2.3.3
+
+  tasks:
+    - name: Install brew packages
+      homebrew:
+        name: "{{ item }}"
+      with_items:
+        - ack
+        - automake
+        - awscli
+        - cmake
+        - curl
+        - doctl
+        - git
+        - gpg
+        - libxml2
+        - libxslt
+        - memcached
+        - mongodb
+        - node
+        - openssl
+        - postgresql
+        - python
+        - rbenv
+        - readline
+        - redis
+        - ruby-build
+        - shellcheck
+        - ssh-copy-id
+        - tree
+        - zsh
+
+    - name: Install Applications
+      homebrew_cask:
+        name: "{{ item }}"
+        state: present
+        install_options: 'appdir=/Applications'
+      with_items:
+        - atom
+        - dash
+        - docker
+        - dropbox
+        - firefox
+        - google-chrome
+        - gpgtools
+        - postman
+        - slack
+        - vagrant
+        - virtualbox
+
+    - name: Install Atom packages
+      shell: apm install {{ item }}
+      args:
+        creates: "{{ home }}/.atom/packages/{{ item }}"
+      with_items:
+        - atom-beautify
+        - busy-signal
+        - intentions
+        - language-rspec
+        - linter
+        - linter-coffeescript
+        - linter-csslint
+        - linter-jshint
+        - linter-rubocop
+        - linter-scss-lint
+        - linter-shellcheck
+        - linter-ui-default
+        - linter-xmllint
+        - merge-conflicts
+        - platformio-ide-terminal
+        - ruby-block
+        - vim-mode-plus
+        - vim-mode-plus-keymaps-for-surround
+
+    - name: Clone oh-my-zsh repo
+      git:
+        repo: https://github.com/robbyrussell/oh-my-zsh.git
+        dest: "{{ home }}/.oh-my-zsh"
+
+    - name: Create .zshrc file
+      template:
+        src: ./templates/zshrc.j2
+        dest: '{{ home }}/.zshrc'
+        force: no
+        mode: 0600
+
+    - name: Set zsh as default shell
+      become: yes
+      user: name={{ user }} shell=/bin/zsh
+
+    - name: Install ruby
+      command: "rbenv install {{ ruby_version }}"
+      args:
+        creates: "{{ home }}/.rbenv/versions/{{ ruby_version }}"
+
+    - name: Set default ruby version
+      command: "rbenv global {{ ruby_version }}"
+
+    - name: Install default gems
+      gem:
+        name: "{{ item }}"
+        user_install: no
+        executable: "{{ home }}/.rbenv/shims/gem"
+      with_items:
+        - bundler
+        - rubocop
+        - scss_lint
+
+    - name: Install pip packages
+      pip:
+        name: "{{ item }}"
+      with_items:
+        - dopy
+        - pymongo
