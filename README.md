@@ -10,4 +10,4 @@ $ sudo pip install ansible
 ```
 
 ### To Run
-`ansible-playbook -i inventory main.yml -K`
+`ansible-playbook -i inventory dev-machine.yml -K`

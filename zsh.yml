@@ -1,0 +1,19 @@
+- name: Install zsh
+  homebrew:
+    name: 'zsh'
+    
+- name: Clone oh-my-zsh repo
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh.git
+    dest: "{{ home }}/.oh-my-zsh"
+
+- name: Create .zshrc file
+  template:
+    src: ./templates/zshrc.j2
+    dest: '{{ home }}/.zshrc'
+    force: no
+    mode: 0600
+
+- name: Set zsh as default shell
+  become: yes
+  user: name={{ user }} shell=/bin/zsh

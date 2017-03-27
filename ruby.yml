@@ -1,0 +1,17 @@
+- name: Install ruby
+  command: "rbenv install {{ ruby_version }}"
+  args:
+    creates: "{{ home }}/.rbenv/versions/{{ ruby_version }}"
+
+- name: Set default ruby version
+  command: "rbenv global {{ ruby_version }}"
+
+- name: Install default gems
+  gem:
+    name: "{{ item }}"
+    user_install: no
+    executable: "{{ home }}/.rbenv/shims/gem"
+  with_items:
+    - bundler
+    - rubocop
+    - scss_lint

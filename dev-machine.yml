@@ -1,0 +1,39 @@
+---
+- hosts: all
+  connection: local
+  vars:
+    user: "{{ lookup('env', 'USER') }}"
+    home: "{{ lookup('env', 'HOME') }}"
+    ruby_version: 2.4.1
+  vars_files:
+    - homebrew.yml
+    - homebrew_casks.yml
+    - atom.yml
+    - pip.yml
+
+  tasks:
+    - name: Install brew packages
+      homebrew:
+        name: "{{ item }}"
+      with_items: "{{ brew_list }}"
+
+    - name: Install Applications
+      homebrew_cask:
+        name: "{{ item }}"
+        state: present
+        install_options: 'appdir=/Applications'
+      with_items: "{{ cask_list }}"
+
+    - name: Install Atom packages
+      shell: apm install {{ item }}
+      args:
+        creates: "{{ home }}/.atom/packages/{{ item }}"
+      with_items: "{{ atom_list }}"
+
+    - name: Install pip packages
+      pip:
+        name: "{{ item }}"
+      with_items: "{{ pip_list }}"
+
+    - include: zsh.yml
+    - include: ruby.yml

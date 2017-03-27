@@ -1,0 +1,20 @@
+---
+atom_list:
+  - atom-beautify
+  - busy-signal
+  - intentions
+  - language-rspec
+  - linter
+  - linter-coffeescript
+  - linter-csslint
+  - linter-jshint
+  - linter-rubocop
+  - linter-scss-lint
+  - linter-shellcheck
+  - linter-ui-default
+  - linter-xmllint
+  - merge-conflicts
+  - platformio-ide-terminal
+  - ruby-block
+  - vim-mode-plus
+  - vim-mode-plus-keymaps-for-surround

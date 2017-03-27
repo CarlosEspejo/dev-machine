@@ -1,0 +1,17 @@
+---
+cask_list:
+  - atom
+  - dash
+  - docker
+  - dropbox
+  - filezilla
+  - firefox
+  - google-chrome
+  - gpgtools
+  - pgadmin4
+  - postman
+  - slack
+  - screenhero
+  - robomongo
+  - vagrant
+  - virtualbox

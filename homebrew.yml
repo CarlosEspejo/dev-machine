@@ -1,0 +1,26 @@
+---
+brew_list:
+  - ack
+  - automake
+  - awscli
+  - cmake
+  - curl
+  - doctl
+  - git
+  - gpg
+  - libxml2
+  - libxslt
+  - memcached
+  - mongodb
+  - node
+  - openssl
+  - postgresql
+  - python
+  - rbenv
+  - readline
+  - redis
+  - ruby-build
+  - shellcheck
+  - ssh-copy-id
+  - tree
+  - zsh
