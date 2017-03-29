@@ -49,7 +49,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ruby bundler ssh-agent)
+plugins=(git ruby bundler ssh-agent brew)
 
 # User configuration
 
@@ -86,6 +86,10 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+# Fixes issue where one pip package can't find another
+export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
+
+
 # Allows you to use arguments for a Rake task in Zsh
 unsetopt nomatch
 
@@ -98,6 +102,9 @@ export BUNDLER_EDITOR=atom
 export PGDATA=/usr/local/var/postgres
 alias start_pg="pg_ctl -D $PGDATA -l $PGDATA/server.log start"
 alias stop_pg="pg_ctl -D $PGDATA stop -m fast"
+
+# pip
+alias pipup="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
 
 # Bundler
 alias bex="bundle exec"
