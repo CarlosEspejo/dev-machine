@@ -89,6 +89,9 @@ eval "$(rbenv init -)"
 # Fixes issue where one pip package can't find another
 export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 
+# Configure Go development
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 
 # Allows you to use arguments for a Rake task in Zsh
 unsetopt nomatch
