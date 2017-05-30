@@ -12,6 +12,7 @@ cask_list:
   - postman
   - slack
   - screenhero
+  - skype
   - robomongo
   - vagrant
   - virtualbox

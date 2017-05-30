@@ -4,8 +4,13 @@ Ansible playbook for base configuration of my dev-machine
 ### Requirements
 
 ```shell
+# command line tools
 $ xcode-select --install
-$ sudo easy_install pip
+
+# Install Homebrew
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+$ brew install python
 $ sudo pip install ansible
 ```
 

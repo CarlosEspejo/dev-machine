@@ -15,6 +15,7 @@
     - name: Install brew packages
       homebrew:
         name: "{{ item }}"
+        update_homebrew: yes
       with_items: "{{ brew_list }}"
 
     - name: Install Applications

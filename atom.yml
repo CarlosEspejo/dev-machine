@@ -2,7 +2,13 @@
 atom_list:
   - atom-beautify
   - busy-signal
+  - dash
+  - file-icons
+  - go-plus
   - intentions
+  - language-docker
+  - language-nginx
+  - language-protobuf
   - language-rspec
   - linter
   - linter-coffeescript
