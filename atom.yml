@@ -13,7 +13,7 @@ atom_list:
   - linter
   - linter-coffeescript
   - linter-csslint
-  - linter-jshint
+  - linter-js-standard
   - linter-rubocop
   - linter-scss-lint
   - linter-shellcheck

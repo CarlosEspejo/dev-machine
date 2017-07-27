@@ -3,3 +3,4 @@ pip_list:
   - dopy
   - pymongo
   - cryptography
+  - ansible
