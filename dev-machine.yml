@@ -4,7 +4,7 @@
   vars:
     user: "{{ lookup('env', 'USER') }}"
     home: "{{ lookup('env', 'HOME') }}"
-    ruby_version: 2.4.1
+    ruby_version: 2.4.2
   vars_files:
     - homebrew.yml
     - homebrew_casks.yml
@@ -36,5 +36,5 @@
         name: "{{ item }}"
       with_items: "{{ pip_list }}"
 
-    - include: zsh.yml
-    - include: ruby.yml
+    - import_tasks: zsh.yml
+    - import_tasks: ruby.yml
