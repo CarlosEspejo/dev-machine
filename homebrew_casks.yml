@@ -12,8 +12,6 @@ cask_list:
   - pgadmin4
   - postman
   - slack
-  - screenhero
   - skype
-  - robomongo
   - vagrant
   - virtualbox

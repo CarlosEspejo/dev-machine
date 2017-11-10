@@ -3,6 +3,7 @@ atom_list:
   - atom-beautify
   - busy-signal
   - dash
+  - ex-mode
   - file-icons
   - go-plus
   - intentions
