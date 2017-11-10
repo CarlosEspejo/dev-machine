@@ -18,6 +18,7 @@ brew_list:
   - postgresql
   - python
   - rbenv
+  - rbenv-default-gems
   - readline
   - redis
   - ruby-build
